@@ -1,1 +1,1 @@
-void O_nsort(int *,int,char);
+int O_nsort(int *,int,char);
