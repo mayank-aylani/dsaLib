@@ -46,3 +46,52 @@ collection[in]=tmp;
 }
 return cycle_count; //if cycle_count is (collection_size-1) collection is successfully sorted
 }
+
+int O_n2sort(int *collection,int collection_size,char order)
+{
+if(collection==NULL) return 2;
+if(collection_size<=0) return 2;
+if(order!='A' && order!='D') return 2;
+int cycles=0,in=0,out=0,tmp=0;
+int cycle_count=0;
+cycles=collection_size-2;
+if(order=='A')
+{
+while(cycles>-1)
+{
+in=0,out=1;
+while(in<=cycles)
+{
+if(*(collection+out)<*(collection+in)) //collection[out]<collection[in]
+{
+tmp=*(collection+in);
+*(collection+in)=*(collection+out);
+*(collection+out)=tmp;
+}
+++cycle_count; //if (cycle_count==(2 times of collection_size)), collection is successfully sorted
+++in,++out;
+}
+--cycles;
+}
+}
+else
+{
+while(cycles>-1)
+{
+in=0,out=1;
+while(in<=cycles)
+{
+if(*(collection+in)<*(collection+out))
+{
+tmp=*(collection+out);
+*(collection+out)=*(collection+in);
+*(collection+in)=tmp;
+}
+++cycle_count;
+++in,++out;
+}
+--cycles;
+}
+}
+return cycle_count; //incorrect
+}
