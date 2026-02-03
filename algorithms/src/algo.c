@@ -67,10 +67,10 @@ if(*(collection+out)<*(collection+in)) //collection[out]<collection[in]
 tmp=*(collection+in);
 *(collection+in)=*(collection+out);
 *(collection+out)=tmp;
-}
-++cycle_count; //if (cycle_count==(2 times of collection_size)), collection is successfully sorted
+} 
 ++in,++out;
 }
+++cycle_count; //if (cycle_count) is equals to (collection_size-1), sorting successfull
 --cycles;
 }
 }
@@ -87,11 +87,11 @@ tmp=*(collection+out);
 *(collection+out)=*(collection+in);
 *(collection+in)=tmp;
 }
-++cycle_count;
 ++in,++out;
 }
+++cycle_count;
 --cycles;
 }
 }
-return cycle_count; //incorrect
+return cycle_count; 
 }
