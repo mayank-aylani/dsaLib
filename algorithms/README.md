@@ -5,8 +5,8 @@ The <algo.h> library is complied under,
 
 *if O_nsort function returns (collection_size-1) number, depicts collection is sorted successfully
 
-*if O_n2sort function returns (collection_size*2) number, depicts collection is sorted
-successfully (correction-----)
+*if O_n2sort function returns (collection_size-1) number, depicts collection is sorted successfully
+
 
 | error_code |      reason       |
 |      	     |		         |
