@@ -95,3 +95,10 @@ tmp=*(collection+out);
 }
 return cycle_count; 
 }
+
+int O_n2Sort(int *collection,int collection_size,char order)
+{
+if(collection==NULL) return 2;
+if(collection_size<=0) return 2;
+if(order!='A' && order!='D') return 2;
+}
