@@ -101,4 +101,49 @@ int O_n2Sort(int *collection,int collection_size,char order)
 if(collection==NULL) return 2;
 if(collection_size<=0) return 2;
 if(order!='A' && order!='D') return 2;
+int in=0,out=0,swap_pointer=0,tmp=0;
+int cycle_count=0;
+if(order=='A')
+{
+while(in<=collection_size-2)
+{
+swap_pointer=in;
+out=in+1;
+while(out<=collection_size-1)
+{
+if(*(collection+out)<*(collection+swap_pointer))
+{
+swap_pointer=out;
+}
+++out;
+}
+tmp=*(collection+swap_pointer);
+*(collection+swap_pointer)=*(collection+in);
+*(collection+in)=tmp;
+++in;
+++cycle_count;
+}
+}
+else
+{
+while(in<collection_size-1)
+{
+swap_pointer=in;
+out=in+1;
+while(out<collection_size)
+{
+if(*(collection+out)>*(collection+swap_pointer))
+{
+swap_pointer=out;
+}
+++out;
+}
+tmp=*(collection+swap_pointer);
+*(collection+swap_pointer)=*(collection+in);
+*(collection+in)=tmp;
+++in;
+++cycle_count;
+}
+}
+return cycle_count;
 }
