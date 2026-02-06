@@ -9,7 +9,7 @@ for(int i=0;i<10;++i)
 {
 scanf("%d",&collection[i]);
 }
-code=O_n2Sort(collection,10,'A');
+code=selection_sort(collection,10,'A');
 if(code==10-1) printf("Collection sorted -> \n");
 printf("Returned code is : %d\n",code);
 for(int i=0;i<10;++i)
