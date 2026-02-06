@@ -96,7 +96,7 @@ tmp=*(collection+out);
 return cycle_count; 
 }
 
-int O_n2Sort(int *collection,int collection_size,char order)
+int selection_sort(int *collection,int collection_size,char order)
 {
 if(collection==NULL) return 2;
 if(collection_size<=0) return 2;
@@ -142,6 +142,50 @@ tmp=*(collection+swap_pointer);
 *(collection+swap_pointer)=*(collection+in);
 *(collection+in)=tmp;
 ++in;
+++cycle_count;
+}
+}
+return cycle_count;
+}
+
+int insertion_sort(int *collection,int collection_size,char order)
+{
+if(collection==NULL) return 2;
+if(collection_size<=0) return 2;
+if(order!='A' && order!='D') return 2;
+int y=0,key=0,z=0;
+int cycle_count=0;
+y=1;
+if(order=='A')
+{
+while(y<collection_size)
+{
+key=*(collection+y);
+z=y-1;
+while(z>-1 && *(collection+z)>key)
+{
+*(collection+z+1)=*(collection+z);
+--z;
+//++cycle_count; either we will increment it here or outer, output will be same
+}
+*(collection+z+1)=key;
+++y;
+++cycle_count;
+}
+}
+else
+{
+while(y<collection_size)
+{
+key=*(collection+y);
+z=y-1;
+while(z>-1 && *(collection+z)<key)
+{
+*(collection+z+1)=*(collection+z);
+--z;
+}
+*(collection+z+1)=key;
+++y;
 ++cycle_count;
 }
 }
