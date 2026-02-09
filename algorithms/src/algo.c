@@ -191,3 +191,27 @@ while(z>-1 && *(collection+z)<key)
 }
 return cycle_count;
 }
+
+int shell_sort(int *collection,int collection_size,char order)
+{
+int y=0,key=0,z=0;
+int lower_bound=0,upper_bound=collection_size-1;
+int skip=collection_size/2;
+while(skip>=1)
+{
+y=lower_bound+skip;
+while(y<upper_bound)
+{
+key=*(collection+y);
+z=y-skip;
+while(z>-1 && *(collection+z)>key)
+{
+*(collection+z+skip)=*(collection+z);
+z-=skip;  //z=z-skip
+}
+*(collection+z+skip)=key;
+y+=skip;
+}
+skip=skip/2;
+}
+}
