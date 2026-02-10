@@ -194,13 +194,18 @@ return cycle_count;
 
 int shell_sort(int *collection,int collection_size,char order)
 {
+if(collection==NULL) return 2;
+if(collection_size<=0) return 2;
+if(order!='A' && order!='D') return 2;
 int y=0,key=0,z=0;
 int lower_bound=0,upper_bound=collection_size-1;
 int skip=collection_size/2;
+if(order=='A')
+{
 while(skip>=1)
 {
 y=lower_bound+skip;
-while(y<upper_bound)
+while(y<=upper_bound)
 {
 key=*(collection+y);
 z=y-skip;
@@ -213,5 +218,26 @@ z-=skip;  //z=z-skip
 y+=skip;
 }
 skip=skip/2;
+}
+}
+else
+{
+while(skip>=1)
+{
+y=lower_bound+skip;
+while(y<=upper_bound)
+{
+key=*(collection+y);
+z=y-skip;
+while(z>-1 && *(collection+z)<key)
+{
+*(collection+z+skip)=*(collection+z);
+z-=skip;
+}
+*(collection+z+skip)=key;
+y+=skip;
+}
+skip=skip/2;
+}
 }
 }
