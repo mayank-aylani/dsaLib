@@ -242,20 +242,25 @@ skip=skip/2;
 }
 }
 
-int to_max_heap(int *collection,int collection_size);
+int to_max_heap(int *collection,int collection_size)
 {
 int lower_bound=0,upper_bound=1;
 int root_index=0,child_index=0;
+int tmp=0;
 while(upper_bound<collection_size)
 {
 child_index=upper_bound;
+while(child_index>0)
+{
+root_index=((child_index-1)/2);
 if(collection[child_index]>collection[root_index])
 {
 tmp=collection[root_index];
 collection[root_index]=collection[child_index];
 collection[child_index]=tmp;
-if(root_index<0) break;
 child_index=root_index;
+}
+else break;
 }
 ++upper_bound;	
 }
