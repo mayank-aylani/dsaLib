@@ -8,7 +8,7 @@ for(int i=0;i<10;++i)
 {
 scanf("%d",&collection[i]);
 }
-code=shell_sort(&collection[0],10,'D');
+code=shell_sort(&collection[0],10,'A');
 printf("Returned code : %d",code);
 printf("Data sorted -> ");
 for(int i=0;i<10;++i)
