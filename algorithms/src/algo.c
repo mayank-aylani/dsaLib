@@ -265,3 +265,47 @@ else break;
 ++upper_bound;	
 }
 }
+
+int n_lognsort(int *collection,int collection_size,char order)
+{
+to_max_heap(&collection[0],collection_size); //call, to convert given collection into max-heap
+int upper_bound=collection_size-1,lower_bound=0;
+int root_index=0,left_child_index=0,right_child_index=0;
+int swapping_index=0;
+int tmp=0;
+while(upper_bound>=1)
+{
+//as collection is arranged as max-heap, the highest weight element is present at 0th index
+//swapping 0th index element with last index
+tmp=collection[lower_bound];
+collection[lower_bound]=collection[upper_bound];
+collection[upper_bound]=tmp;
+--upper_bound;
+//after swapping, adjusting collection as max-heap
+while(root_index<upper_bound)
+{
+left_child_index=((root_index*2)+1);
+if(left_child_index>upper_bound) break;
+right_child_index=(left_child_index+1);
+if(right_child_index>upper_bound)
+{
+swapping_index=left_child_index;
+}
+else
+{
+//means we have both left_child and right_child
+if(collection[left_child_index]>collection[right_child_index]) swapping_index=left_child_index;
+else swapping_index=right_child_index;
+}
+//swapping data to adjust heap
+if(collection[swapping_index]>collection[root_index])
+{
+tmp=collection[root_index];
+collection[root_index]=collection[swapping_index];
+collection[swapping_index]=tmp;
+root_index=swapping_index;  //as swapped, maybe child indexes get disturbed
+}
+else break;
+}
+}
+}
