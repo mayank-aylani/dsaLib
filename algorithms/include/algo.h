@@ -4,4 +4,5 @@ int selection_sort(int *,int,char);
 int insertion_sort(int *,int,char);
 int shell_sort(int *,int,char);
 int to_max_heap(int *,int);
+int to_min_heap(int *,int);
 int n_lognsort(int *,int,char);
