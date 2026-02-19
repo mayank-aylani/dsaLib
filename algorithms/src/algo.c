@@ -244,11 +244,15 @@ skip=skip/2;
 
 int to_max_heap(int *collection,int collection_size)
 {
+if(collection==NULL) return 2;
+if(collection_size<=0) return 2;
 int lower_bound=0,upper_bound=1;
 int root_index=0,child_index=0;
 int tmp=0;
+int counter=0;
 while(upper_bound<collection_size)
 {
+++counter;
 child_index=upper_bound;
 while(child_index>0)
 {
@@ -264,16 +268,50 @@ else break;
 }
 ++upper_bound;	
 }
+return counter;
 }
 
+int to_min_heap(int *collection,int collection_size)
+{
+if(collection==NULL) return 2;
+if(collection_size<=0) return 2;
+int lower_bound=0,upper_bound=1;
+int root_index=0,child_index=0;
+int tmp=0;
+int counter=0;
+while(upper_bound<collection_size)
+{
+++counter;
+child_index=upper_bound;
+while(child_index>0)
+{
+root_index=((child_index-1)/2);
+if(collection[child_index]<collection[root_index])
+{
+tmp=collection[child_index];
+collection[child_index]=collection[root_index];
+collection[root_index]=tmp;
+child_index=root_index;
+}
+else break;
+}
+++upper_bound;
+}
+return counter;
+}
+
+//to be corrected
 int n_lognsort(int *collection,int collection_size,char order)
 {
-to_max_heap(&collection[0],collection_size); //call, to convert given collection into max-heap
+//assumed that given collection is arranged as per rules of max-heap
+if(collection==NULL) return 2;
+if(collection_size<=0) return 2;
+if(order!='A' && order!='D') return 2;
 int upper_bound=collection_size-1,lower_bound=0;
 int root_index=0,left_child_index=0,right_child_index=0;
 int swapping_index=0;
 int tmp=0;
-while(upper_bound>=1)
+while(upper_bound>0)
 {
 //as collection is arranged as max-heap, the highest weight element is present at 0th index
 //swapping 0th index element with last index
