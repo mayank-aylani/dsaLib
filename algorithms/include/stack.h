@@ -1,9 +1,9 @@
-#include<stddef.h>
-#include<stdlib.h>  //for malloc
-int *stack=NULL;
-int top,size;
-top=size;
-void stack(int);
+#include<stdbool.h>
+#define TRUE 1;
+#define FALSE 0;
+void init_stack(int);
 void push(int);
 int pop();
+bool is_empty();
+bool is_full();
 
